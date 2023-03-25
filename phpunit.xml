@@ -1,0 +1,12 @@
+<phpunit bootstrap="./test/bootstrap.php">
+    <testsuites>
+        <testsuite name="ProviderTests">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src/</directory>
+        </include>
+    </coverage>
+</phpunit>

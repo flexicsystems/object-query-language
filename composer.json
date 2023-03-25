@@ -1,0 +1,40 @@
+{
+  "name": "flexic/object-query-language",
+  "description": "Provides a mutator for php objects.",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [],
+  "authors": [
+    {
+      "name": "Hendrik Legge",
+      "email": "hendrik.legge@themepoint.de"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "ergebnis/php-cs-fixer-config": "^4.9.0",
+    "phpstan/phpstan": "^1.8.8",
+    "phpstan/phpstan-deprecation-rules": "^1.0.0",
+    "phpstan/phpstan-strict-rules": "^1.4.4",
+    "phpunit/phpunit": "^9.5.25"
+  },
+  "autoload": {
+    "psr-4": {
+      "Flexic\\ObjectQueryLanguage\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Flexic\\ObjectQueryLanguage\\Test\\": "test/"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "8.1"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
