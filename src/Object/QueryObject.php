@@ -63,12 +63,12 @@ final class QueryObject
         $type = $this->reflection->getProperty($this->propertyName)->getType();
 
         if (
-            $type instanceof \ReflectionNamedType &&
-            $type->isBuiltin()
+            $type instanceof \ReflectionNamedType
+            && $type->isBuiltin()
         ) {
             $value = $this->convert(
                 $type->getName(),
-                $value
+                $value,
             );
         }
 
@@ -106,15 +106,15 @@ final class QueryObject
 
     private function convert(string $type, mixed $input): mixed
     {
-        if ($type === 'int') {
+        if ('int' === $type) {
             return (int) $input;
         }
 
-        if ($type === 'float') {
+        if ('float' === $type) {
             return (float) $input;
         }
 
-        if ($type === 'bool') {
+        if ('bool' === $type) {
             if ('false' === $input || 0 === $input || '0' === $input) {
                 return false;
             }
@@ -126,15 +126,15 @@ final class QueryObject
             return (bool) $input;
         }
 
-        if ($type === 'string') {
+        if ('string' === $type) {
             return (string) $input;
         }
 
-        if ($type === 'array') {
+        if ('array' === $type) {
             return (array) $input;
         }
 
-        if ($type === 'object') {
+        if ('object' === $type) {
             return (object) $input;
         }
 
