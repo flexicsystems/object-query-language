@@ -104,6 +104,10 @@ final class QueryObject
             return false;
         }
 
+        $property = $this->reflection->getProperty($this->propertyName);
+        $propertyName = $property->getName();
+        $methods = \get_class_methods($this->object);
+
         if (\in_array(\sprintf('set%s', \ucfirst($propertyName)), $methods, true)) {
             $this->object->{'set' . \ucfirst($propertyName)}(
                 $classReflection->newInstance()
