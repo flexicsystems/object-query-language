@@ -72,10 +72,18 @@ final class QueryObject
             );
         }
 
-        $this->reflection->getProperty($this->propertyName)->setValue(
-            $this->object,
-            $value,
-        );
+        $property = $this->reflection->getProperty($this->propertyName);
+        $propertyName = $property->getName();
+        $methods = \get_class_methods($this->object);
+
+        if (\in_array(\sprintf('set%s', \ucfirst($propertyName)), $methods, true)) {
+            $this->object->{'set' . \ucfirst($propertyName)}($value);
+        } else {
+            $this->reflection->getProperty($this->propertyName)->setValue(
+                $this->object,
+                $value,
+            );
+        }
     }
 
     private function initialize(): bool
@@ -96,10 +104,16 @@ final class QueryObject
             return false;
         }
 
-        $this->reflection->getProperty($this->propertyName)->setValue(
-            $this->object,
-            $classReflection->newInstance(),
-        );
+        if (\in_array(\sprintf('set%s', \ucfirst($propertyName)), $methods, true)) {
+            $this->object->{'set' . \ucfirst($propertyName)}(
+                $classReflection->newInstance()
+            );
+        } else {
+            $this->reflection->getProperty($this->propertyName)->setValue(
+                $this->object,
+                $classReflection->newInstance(),
+            );
+        }
 
         return true;
     }
