@@ -31,8 +31,6 @@ final class Writer extends Handler
         }
 
         foreach ($stream->getProperties() as $property) {
-            // ToDo: Add type check
-
             $property->setValue(
                 $value,
             );
